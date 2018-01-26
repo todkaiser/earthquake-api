@@ -12,6 +12,8 @@
 #  updated_at  :datetime         not null
 #  time        :datetime
 #  usgs_id     :string
+#  address     :string
+#  tsunami     :decimal(, )
 #
 
 require 'rails_helper'
