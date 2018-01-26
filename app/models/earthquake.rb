@@ -3,7 +3,7 @@
 # Table name: earthquakes
 #
 #  id          :integer          not null, primary key
-#  magnitude   :decimal(5, 2)
+#  magnitude   :float
 #  longitude   :float
 #  latitude    :float
 #  region_type :string
@@ -17,4 +17,11 @@
 #
 
 class Earthquake < ApplicationRecord
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      obj.region_type = geo.state
+    end
+  end
+
+  # after_validation :reverse_geocode
 end

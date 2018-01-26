@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126121410) do
+ActiveRecord::Schema.define(version: 20180126130424) do
 
   create_table "earthquakes", force: :cascade do |t|
-    t.decimal "magnitude", precision: 5, scale: 2
+    t.float "magnitude"
     t.float "longitude"
     t.float "latitude"
     t.string "region_type"
