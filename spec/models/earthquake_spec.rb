@@ -4,8 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  magnitude   :decimal(5, 2)
-#  longitude   :decimal(, )
-#  latitude    :decimal(, )
+#  longitude   :float
+#  latitude    :float
 #  region_type :string
 #  title       :string
 #  created_at  :datetime         not null
