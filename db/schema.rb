@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126094421) do
+ActiveRecord::Schema.define(version: 20180126100633) do
 
   create_table "earthquakes", force: :cascade do |t|
-    t.decimal "magnitude", precision: 2
-    t.string "longitude"
-    t.string "latitude"
+    t.decimal "magnitude", precision: 5, scale: 2
+    t.decimal "longitude"
+    t.decimal "latitude"
     t.string "region_type"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "time"
+    t.string "usgs_id"
     t.index ["magnitude"], name: "index_earthquakes_on_magnitude"
     t.index ["region_type"], name: "index_earthquakes_on_region_type"
   end
