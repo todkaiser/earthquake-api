@@ -3,7 +3,7 @@
 # Table name: earthquakes
 #
 #  id          :integer          not null, primary key
-#  magnitude   :decimal(5, )
+#  magnitude   :decimal(2, )
 #  longitude   :string
 #  latitude    :string
 #  region_type :string
