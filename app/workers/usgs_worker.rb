@@ -2,31 +2,33 @@ class UsgsWorker
   include Sidekiq::Worker
 
   def perform(*args)
-    earthquakes = EarthquakeService.new.data['features'][0, 10]
-
+    earthquakes = EarthquakeService.new.data['features']
     earthquakes.each do |e|
-      properties = e[:properties]
-      coordinates = e[:geometry][:coordinates]
+      properties = e['properties']
+      coordinates = e['geometry']['coordinates']
       longitude = coordinates.first
       latitude = coordinates.second
 
-      record = Earthquake.find_or_create_by(usgs_id: e.id)
-      record.update_attributes(
-        magnitude: properties[:mag],
-        longitude: longitude,
-        latitude: latitude,
-        region_type: parse_for_state(latitude, longitude),
-        title: properties[:title],
-        time: properties[:time].
-      )
+      result = Earthquake.find_or_create_by(usgs_id: e['id']) do |quake|
+        quake.magnitude = properties['mag']
+        quake.longitude = longitude
+        quake.latitude = latitude
+        quake.tsunami = properties['tsunami']
+        quake.title = properties['title']
+        quake.time = to_datetime(properties['time'])
+      end
+
+      if result
+        puts "Create earthquake record: #{result.usgs_id}"
+      else
+        raise RuntimeError "Earthquake failed to update: #{result.id}"
+      end
     end
   end
 
   private
 
-  def parse_for_state(latitude, longitude)
-     geo_localization = "#{latitude},#{longitude}"
-     query = Geocoder.search(geo_localization).first
-     query.state
+  def to_datetime(timestamp)
+    Time.at(timestamp).to_datetime
   end
 end
