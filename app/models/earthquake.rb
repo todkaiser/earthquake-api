@@ -1,20 +1,15 @@
-# ## Schema Information
-# Schema version: 20180126092145
+# == Schema Information
 #
-# Table name: `earthquakes`
+# Table name: earthquakes
 #
-# ### Columns
-#
-# Name               | Type               | Attributes
-# ------------------ | ------------------ | ---------------------------
-# **`id`**           | `integer`          | `not null, primary key`
-# **`latitude`**     | `string`           |
-# **`longitude`**    | `string`           |
-# **`magnitude`**    | `decimal(5, )`     | `indexed`
-# **`region_type`**  | `string`           | `indexed`
-# **`title`**        | `string`           |
-# **`created_at`**   | `datetime`         | `not null`
-# **`updated_at`**   | `datetime`         | `not null`
+#  id          :integer          not null, primary key
+#  magnitude   :decimal(5, )
+#  longitude   :string
+#  latitude    :string
+#  region_type :string
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class Earthquake < ApplicationRecord
