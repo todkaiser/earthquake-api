@@ -13,7 +13,7 @@
 #  time        :datetime
 #  usgs_id     :string
 #  address     :string
-#  tsunami     :decimal(, )
+#  tsunami     :float
 #
 
 class Earthquake < ApplicationRecord
