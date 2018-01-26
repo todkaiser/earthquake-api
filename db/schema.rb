@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126093055) do
+ActiveRecord::Schema.define(version: 20180126094421) do
 
   create_table "earthquakes", force: :cascade do |t|
     t.decimal "magnitude", precision: 2
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180126093055) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "time"
     t.index ["magnitude"], name: "index_earthquakes_on_magnitude"
     t.index ["region_type"], name: "index_earthquakes_on_region_type"
   end
