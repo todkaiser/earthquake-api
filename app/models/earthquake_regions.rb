@@ -34,7 +34,7 @@ class EarthquakeRegions
             COUNT(id) AS earthquake_count
           ]
         )
-        .order('earthquake_count DESC')
+        .order('total_magnitude DESC')
         .limit(@count)
   end
 end
