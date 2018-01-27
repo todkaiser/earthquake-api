@@ -20,9 +20,11 @@
 class Earthquake < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
-      obj.region_type = geo.state
+      obj.country_code = geo.country_code
+      obj.administrative_division = geo.state
     end
   end
 
-  after_validation :reverse_geocode, if: ->(obj) { obj.region_type.nil? }
+  after_validation :reverse_geocode,
+                   if: -> (obj) { obj.country_code.nil? || obj.administrative_division.nil? }
 end
