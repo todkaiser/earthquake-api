@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127004826) do
+ActiveRecord::Schema.define(version: 20180127010153) do
 
   create_table "earthquakes", force: :cascade do |t|
     t.float "magnitude"
     t.float "longitude"
     t.float "latitude"
-    t.string "region_type"
+    t.string "administrative_division"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20180127004826) do
     t.string "address"
     t.float "tsunami"
     t.string "country_code"
+    t.index ["administrative_division"], name: "index_earthquakes_on_administrative_division"
     t.index ["magnitude"], name: "index_earthquakes_on_magnitude"
-    t.index ["region_type"], name: "index_earthquakes_on_region_type"
   end
 
 end
