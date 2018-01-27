@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180127010153) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "earthquakes", force: :cascade do |t|
     t.float "magnitude"
     t.float "longitude"
