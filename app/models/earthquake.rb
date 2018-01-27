@@ -18,6 +18,8 @@
 #
 
 class Earthquake < ApplicationRecord
+  alias_attribute :admin_region, :administrative_division
+
   reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
       obj.country_code = geo.country_code
