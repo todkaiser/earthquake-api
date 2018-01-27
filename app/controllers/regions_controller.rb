@@ -1,11 +1,25 @@
 class RegionsController < ApplicationController
+  before_action :set_earthquake_regions, only: %i[index]
+
   def index
-    @earthquakes = usa_earthquakes
-    render json: @earthquakes
+    render json: @earthquake_regions.as_json
   end
 
-  def usa_earthquakes
-    quakes = Earthquake.where(country_code: 'US').where.not(admin_region: nil)
-    quakes.group(:admin_region).count
+  private
+
+  def filter_params
+    params.permit(
+      :count,
+      :days,
+      :region_type
+    )
+  end
+
+  def set_earthquake_regions
+    @earthquake_regions = EarthquakeRegions.new({
+      count: filter_params[:count],
+      days: filter_params[:days],
+      region_type: filter_params[:region_type]
+    }).query_earthquakes
   end
 end
