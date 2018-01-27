@@ -2,7 +2,7 @@ class RegionsController < ApplicationController
   before_action :set_earthquake_regions, only: %i[index]
 
   def index
-    render json: @earthquake_regions.data.as_json
+    render json: @earthquake_regions.data.as_json(except: :id)
   end
 
   private
