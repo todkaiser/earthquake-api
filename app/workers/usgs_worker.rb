@@ -29,6 +29,6 @@ class UsgsWorker
   private
 
   def to_datetime(timestamp)
-    Time.at(timestamp).to_datetime
+    Time.at(timestamp / 1000).utc.to_datetime
   end
 end
