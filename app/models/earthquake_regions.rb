@@ -10,20 +10,32 @@ class EarthquakeRegions
     @region_type = region_type === ADMIN_REGION ? region_type : COUNTRY_CODE
   end
 
+  def data
+    {
+      meta: {
+        total_hits: query_earthquakes.length,
+        region_type: @region_type
+      },
+      data: query_earthquakes
+    }
+  end
+
+  private
+
   def query_earthquakes
-    Earthquake
-      .where.not(@region_type => nil)
-      .where(time: @days.days.ago..Time.current)
-      .select(
-        %[
-          id,
-          #{@region_type} AS name,
-          SUM(magnitude) AS total_magnitude,
-          COUNT(id) AS earthquake_count
-        ]
-      )
-      .group(@region_type)
-      .order('COUNT(id) DESC')
-      .limit(@count)
+    @_earthquakes ||= \
+      Earthquake.where.not(@region_type => nil)
+        .where(time: @days.days.ago..Time.current)
+        .select(
+          %[
+            id,
+            #{@region_type} AS name,
+            SUM(magnitude) AS total_magnitude,
+            COUNT(id) AS earthquake_count
+          ]
+        )
+        .group(@region_type)
+        .order('COUNT(id) DESC')
+        .limit(@count)
   end
 end

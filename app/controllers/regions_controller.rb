@@ -2,7 +2,7 @@ class RegionsController < ApplicationController
   before_action :set_earthquake_regions, only: %i[index]
 
   def index
-    render json: @earthquake_regions.as_json
+    render json: @earthquake_regions.data.as_json
   end
 
   private
@@ -20,6 +20,6 @@ class RegionsController < ApplicationController
       count: filter_params[:count],
       days: filter_params[:days],
       region_type: filter_params[:region_type]
-    }).query_earthquakes
+    })
   end
 end
