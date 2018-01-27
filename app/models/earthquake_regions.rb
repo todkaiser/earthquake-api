@@ -30,7 +30,7 @@ class EarthquakeRegions
         .select(
           %[
             #{@region_type} AS name,
-            SUM(magnitude) AS total_magnitude,
+            LOG(SUM(POW(10,magnitude))) AS total_magnitude,
             COUNT(id) AS earthquake_count
           ]
         )
