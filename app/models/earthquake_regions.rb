@@ -34,8 +34,8 @@ class EarthquakeRegions
             COUNT(id) AS earthquake_count
           ]
         )
-        .group(@region_type)
-        .order('COUNT(id) DESC')
+        .group('earthquakes.id', @region_type)
+        .order('COUNT(earthquakes.id) DESC')
         .limit(@count)
   end
 end
