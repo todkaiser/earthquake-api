@@ -189,14 +189,16 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rack-cors
-  rails (~> 5.1.4)
+  rails (= 5.1.4)
   rest-client
   rspec-rails (~> 3.5)
   shoulda-matchers (~> 3.1)
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
-  tzinfo-data
+
+RUBY VERSION
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.16.1

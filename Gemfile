@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.4'
+ruby '2.4.1'
+
+gem 'rails', '5.1.4'
+
+gem 'geocoder'
+gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rack-cors'
 gem 'rest-client'
-gem 'geocoder'
 gem 'sidekiq'
-gem 'pg'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
