@@ -1,25 +1,27 @@
 # ## Schema Information
-# Schema version: 20180128043702
+# Schema version: 20180128112432
 #
 # Table name: `earthquakes`
 #
 # ### Columns
 #
-# Name                           | Type               | Attributes
-# ------------------------------ | ------------------ | ---------------------------
-# **`id`**                       | `integer`          | `not null, primary key`
-# **`address`**                  | `string`           |
-# **`administrative_division`**  | `string`           |
-# **`country_code`**             | `string`           |
-# **`latitude`**                 | `float`            |
-# **`longitude`**                | `float`            |
-# **`magnitude`**                | `float`            |
-# **`time`**                     | `datetime`         |
-# **`title`**                    | `string`           |
-# **`tsunami`**                  | `float`            |
-# **`created_at`**               | `datetime`         | `not null`
-# **`updated_at`**               | `datetime`         | `not null`
-# **`usgs_id`**                  | `string`           |
+# Name                | Type               | Attributes
+# ------------------- | ------------------ | ---------------------------
+# **`id`**            | `integer`          | `not null, primary key`
+# **`address`**       | `string`           |
+# **`country`**       | `string`           |
+# **`country_code`**  | `string`           |
+# **`latitude`**      | `float`            |
+# **`longitude`**     | `float`            |
+# **`magnitude`**     | `float`            |
+# **`state`**         | `string`           |
+# **`state_code`**    | `string`           |
+# **`time`**          | `datetime`         |
+# **`title`**         | `string`           |
+# **`tsunami`**       | `float`            |
+# **`created_at`**    | `datetime`         | `not null`
+# **`updated_at`**    | `datetime`         | `not null`
+# **`usgs_id`**       | `string`           |
 #
 
 class Earthquake < ApplicationRecord
