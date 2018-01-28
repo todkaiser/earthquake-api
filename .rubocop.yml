@@ -12,3 +12,12 @@ Metrics/LineLength:
 AllCops:
   Exclude:
   - 'db/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/GuardClause:
+  Enabled: false
