@@ -26,7 +26,6 @@ class EarthquakeRegions
     @_earthquakes ||= \
       Earthquake.where.not(@region_type => nil)
         .where(time: @days.days.ago..Time.current)
-        .group(@region_type)
         .select(
           %[
             #{@region_type} AS name,
@@ -34,6 +33,7 @@ class EarthquakeRegions
             COUNT(id) AS earthquake_count
           ]
         )
+        .group(@region_type)
         .order('total_magnitude DESC')
         .limit(@count)
   end
