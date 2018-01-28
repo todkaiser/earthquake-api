@@ -1,7 +1,7 @@
 class EarthquakeRegions
   DEFAULT_REGION_COUNT = 10
   DEFAULT_DAYS_BACK = 30
-  DEFAULT_REGION_TYPE = 'country_code'.freeze
+  DEFAULT_REGION_TYPE = 'country'.freeze
 
   def initialize(count:, days:, region_type:)
     @count = filter_count_param(count)
@@ -31,10 +31,10 @@ class EarthquakeRegions
 
   def filter_region_type_param(region_type)
     case region_type
-    when 'country', 'country_code'
-      'country_code'
-    when 'admin', 'administrative', 'administrative_division'
-      'administrative_division'
+    when 'country'
+      'country'
+    when 'state'
+      'state'
     else
       DEFAULT_REGION_TYPE
     end

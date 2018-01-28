@@ -25,15 +25,17 @@
 #
 
 class Earthquake < ApplicationRecord
-  alias_attribute :admin_region, :administrative_division
-
   reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
+      obj.country = geo.country
       obj.country_code = geo.country_code
-      obj.administrative_division = geo.state
+      obj.state = geo.state
+      obj.state_code = geo.state_code
+      obj.address = geo.address
     end
   end
 
-  after_validation :reverse_geocode,
-                   if: ->(obj) { obj.country_code.nil? || obj.administrative_division.nil? }
+  after_validation :reverse_geocode, if: -> {
+    country.nil?  || country_code.nil? || state.nil?  || state_code.nil?
+  }
 end
