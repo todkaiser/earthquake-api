@@ -37,7 +37,7 @@ class EarthquakeRegions
 
   def filter_region_type_param(region_type)
     case region_type
-    when 'country'
+    when 'world'
       'country'
     when 'state'
       'state'
