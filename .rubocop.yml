@@ -1,0 +1,14 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 120
+  # Ignores annotate output
+  IgnoredPatterns: ['\A# \*\*']
+  IgnoreCopDirectives: true
+
+AllCops:
+  Exclude:
+  - 'db/**/*'
