@@ -3,11 +3,17 @@ require: rubocop-rspec
 Rails:
   Enabled: true
 
+Metrics/AbcSize:
+  Max: 85
+
 Metrics/LineLength:
   Max: 120
   # Ignores annotate output
   IgnoredPatterns: ['\A# \*\*']
   IgnoreCopDirectives: true
+
+Metrics/MethodLength:
+  Max: 66
 
 AllCops:
   Exclude:
