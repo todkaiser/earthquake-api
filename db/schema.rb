@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127010153) do
+ActiveRecord::Schema.define(version: 20180128043702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 20180127010153) do
     t.string "address"
     t.float "tsunami"
     t.string "country_code"
-    t.index ["administrative_division"], name: "index_earthquakes_on_administrative_division"
-    t.index ["magnitude"], name: "index_earthquakes_on_magnitude"
   end
 
 end
