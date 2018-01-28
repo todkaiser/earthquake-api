@@ -12,7 +12,7 @@ class EarthquakeRegions
   def data
     {
       meta: {
-        total_hits: query_earthquakes.length,
+        total_regions: query_earthquakes.length,
         region_type: @region_type
       },
       data: query_earthquakes
