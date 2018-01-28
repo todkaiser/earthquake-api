@@ -13,7 +13,7 @@ gem 'sidekiq'
 
 group :development, :test do
   gem 'pry-byebug'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -29,5 +29,8 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
+  gem 'rails-controller-testing'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 3.1'
 end
