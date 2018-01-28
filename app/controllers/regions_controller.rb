@@ -11,7 +11,8 @@ class RegionsController < ApplicationController
     params.permit(
       :count,
       :days,
-      :region_type
+      :region_type,
+      :region_code
     )
   end
 
@@ -19,7 +20,8 @@ class RegionsController < ApplicationController
     @earthquake_regions = EarthquakeRegions.new(
       count: filter_params[:count],
       days: filter_params[:days],
-      region_type: filter_params[:region_type]
+      region_type: filter_params[:region_type],
+      region_code: filter_params[:region_code]
     )
   end
 end
