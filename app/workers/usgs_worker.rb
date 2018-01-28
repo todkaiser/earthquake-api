@@ -19,9 +19,9 @@ class UsgsWorker
       end
 
       if result
-        puts "Create earthquake record: #{result.usgs_id}"
+        Rails.logger.info "Success - created earthquake record: #{result.usgs_id}"
       else
-        raise RuntimeError "Earthquake failed to update: #{result.id}"
+        Rails.logger.error 'Fail - did not create earthquake record'
       end
     end
   end
