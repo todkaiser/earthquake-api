@@ -28,5 +28,5 @@ class Earthquake < ApplicationRecord
   end
 
   after_validation :reverse_geocode,
-                   if: -> (obj) { obj.country_code.nil? || obj.administrative_division.nil? }
+                   if: ->(obj) { obj.country_code.nil? || obj.administrative_division.nil? }
 end

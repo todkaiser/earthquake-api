@@ -23,7 +23,7 @@ RSpec.configuration do |config|
   end
 
   # start the transaction strategy as examples are run
-  config.around(:each) do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning do
       example.run
     end

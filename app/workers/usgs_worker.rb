@@ -1,7 +1,7 @@
 class UsgsWorker
   include Sidekiq::Worker
 
-  def perform(*args)
+  def perform(*_args)
     earthquakes = EarthquakeService.new.data['features']
     earthquakes.each do |e|
       properties = e['properties']

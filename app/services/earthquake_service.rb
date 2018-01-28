@@ -1,5 +1,4 @@
 class EarthquakeService
-
   attr_reader :data
 
   def initialize

@@ -16,10 +16,10 @@ class RegionsController < ApplicationController
   end
 
   def set_earthquake_regions
-    @earthquake_regions = EarthquakeRegions.new({
+    @earthquake_regions = EarthquakeRegions.new(
       count: filter_params[:count],
       days: filter_params[:days],
       region_type: filter_params[:region_type]
-    })
+    )
   end
 end
