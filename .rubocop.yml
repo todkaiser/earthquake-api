@@ -1,7 +1,11 @@
 require: rubocop-rspec
 
-Rails:
-  Enabled: true
+AllCops:
+  Exclude:
+  - 'db/**/*'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
 
 Metrics/AbcSize:
   Max: 85
@@ -15,15 +19,11 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 66
 
-AllCops:
-  Exclude:
-  - 'db/**/*'
+Rails:
+  Enabled: true
 
 Style/Documentation:
   Enabled: false
-
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
 
 Style/GuardClause:
   Enabled: false
