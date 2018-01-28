@@ -10,13 +10,19 @@ class EarthquakeRegions
   end
 
   def data
-    {
-      meta: {
-        total_regions: query_earthquakes.length,
-        region_type: @region_type
-      },
-      data: query_earthquakes
-    }
+    @_earthquakes ||= \
+      Earthquake.where.not(@region_type => nil)
+        .where(time: @days.days.ago..Time.current)
+        .select(
+          %[
+            #{@region_type} AS name,
+            LOG(SUM(POW(10,magnitude))) AS total_magnitude,
+            COUNT(id) AS earthquake_count
+          ]
+        )
+        .group(@region_type)
+        .order('total_magnitude DESC')
+        .limit(@count)
   end
 
   private
@@ -38,21 +44,5 @@ class EarthquakeRegions
     else
       DEFAULT_REGION_TYPE
     end
-  end
-
-  def query_earthquakes
-    @_earthquakes ||= \
-      Earthquake.where.not(@region_type => nil)
-        .where(time: @days.days.ago..Time.current)
-        .select(
-          %[
-            #{@region_type} AS name,
-            LOG(SUM(POW(10,magnitude))) AS total_magnitude,
-            COUNT(id) AS earthquake_count
-          ]
-        )
-        .group(@region_type)
-        .order('total_magnitude DESC')
-        .limit(@count)
   end
 end
