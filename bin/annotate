@@ -1,0 +1,2 @@
+#!/bin/bash
+annotate --show-migration --simple-indexes --classified-sort --exclude tests,fixtures,factories,serializers --format markdown
