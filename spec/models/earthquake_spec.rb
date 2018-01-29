@@ -6,6 +6,7 @@ describe Earthquake, type: :model do
   before { allow_any_instance_of(described_class).to receive(:reverse_geocode).and_return(nil) }
 
   it 'is valid with valid attributes' do
+    subject.usgs_id = 'nc72959026'
     subject.magnitude = 0.98
     subject.longitude = -122.5268333
     subject.latitude = 37.7015
