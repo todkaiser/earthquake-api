@@ -10,6 +10,30 @@ Layout/MultilineMethodCallIndentation:
 Metrics/AbcSize:
   Max: 85
 
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes/**/*'
+    - 'lib/tasks/**/*'
+  ExcludedMethods:
+    - configure
+    - context
+    - define
+    - describe
+    - draw
+    - factory
+    - feature
+    - guard
+    - included
+    - it
+    - let
+    - let!
+    - scenario
+    - setup
+    - shared_context
+    - shared_examples
+    - shared_examples_for
+    - transaction
+
 Metrics/LineLength:
   Max: 120
   # Ignores annotate output
@@ -27,6 +51,9 @@ RSpec/AnyInstance:
   - 'spec/models/earthquake_spec.rb'
 
 RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/LetSetup:
   Enabled: false
 
 RSpec/NamedSubject:
