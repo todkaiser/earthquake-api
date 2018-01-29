@@ -1,6 +1,6 @@
 Geocoder.configure(
-  :lookup => :google,
-  :timeout => 5,
-  :units => :km,
-  :cache => Redis.new
+  lookup: :google,
+  timeout: 5,
+  units: :km,
+  cache: Redis.new
 )
