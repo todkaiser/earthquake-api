@@ -1,4 +1,10 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe RegionsController, type: :controller do
+describe RegionsController, type: :controller do
+  describe '#index' do
+    it 'responds 200' do
+      get :index
+      expect(response.status).to eq(200)
+    end
+  end
 end
