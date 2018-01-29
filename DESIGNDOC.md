@@ -1,5 +1,7 @@
 ## Describe how you would improve upon your current design.
 
+#### Route changes
+
 I think adding a few more endpoints might be more expressive than a bunch of ambiguous query parameters. Some ideas:
 
 ```
@@ -9,6 +11,8 @@ GET /grouped_regions?states[]=CA&states[]=AK
 ```
 GET /grouped_regions?country[]=USA&country[]=JP
 ```
+
+#### Response schema changes
 
 I think the response should contain more fields. There are only three fields being returned, e.g.
 
@@ -55,14 +59,24 @@ To me, it would be more useful if the response looked like this:
 
 This response provides more meaningful information. The `meta` object reminds me what grouping I'm using, there is a count of grouped regions as well as the order. The `limit` param takes over for `count`. Basically, the query param filters are contained within the meta. Additionally, the actual data of the grouped earthquake regions will be under the `data` object, as well as serialized aspects of the model providing more useful information about the region in question.
 
+#### Using a microframework
+
+I used Rails (rails-api) to build this web service because I know it well and I feel very productive prototyping anything in it. It's the first tool I reach for. With that said, it may be overkill as a solution. An alternative could have used a microframework like Sinatra.
+
 ---
 
 ## Why did you choose the region definition you did? What other definitions did you consider and what are the pros/cons of each approach?
 
+#### timezone
+
 Timezone is a less meaningful definition with regard to determining the most dangerous earthquake regions. It isn't intuitive in visualizing a distinct geographical region. While we may be familiar with the geography of the region within our timezone, we need to bear in mind that timezone includes _both_ hemispheres. That's a huge surface area and isn't specific. It's simply not intuitive when identifying a region.
+
+#### tsunami
 
 At first I thought maybe tsunami might work. The effects can certainly be catastrophic, so they definitely qualify as a danger. If there is a tsunami warning then we know that an earthquake triggered close to a coast. But, there is a lot of coastal area in the world. Again, not specific enough.
 
+
+#### world & state
 I eventually went with two region type definitions: __world__ and __state__.
 
 With world, clustering is by country. This is more meaningful because we can see if a certain country has suffered the most from total magnitude. While there is huge variance between the geographic size of countries - the larger ones like Russia, US, and China losing specificity - it is still informative because is brings a distinct place in mind.
