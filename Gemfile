@@ -8,6 +8,7 @@ gem 'geocoder'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rack-cors'
+gem 'redis-rails'
 gem 'rest-client'
 gem 'sidekiq'
 
