@@ -1,25 +1,201 @@
-# README
+# Earthquake API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A webservice that returns the most dangerous regions as measured by total measured earthquake energy in descending order as json documents.
 
-Things you may want to cover:
+### Pre-install Steps
 
-* Ruby version
+- Assumptions: using Mac and homebrew
+- Note: For onboarding new developers, consider the [thoughtbot laptop script](https://github.com/thoughtbot/laptop)
 
-* System dependencies
+#### Install versions of ruby
+```
+brew install ruby-build
+```
 
-* Configuration
+```
+brew install rbenv
+```
 
-* Database creation
+```
+rbenv install 2.4.1
+```
 
-* Database initialization
+---
 
-* How to run the test suite
+### Install PostgresSQL and Redis
+```
+brew install postgresql
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+brew services start postgresql
+```
 
-* Deployment instructions
+```
+brew install redis
+```
 
-* ...
-# earthquake-api
+```
+brew services start redis
+```
+
+---
+
+### Prepare Rails App
+
+Note: If I have given you access to the private repository, just clone the repo at `git@github.com:todkaiser/earthquake-api.git`
+
+```
+cd earthquake-api
+```
+
+```
+gem install bundler
+```
+
+```
+bundle install
+```
+
+#### Run database migration
+```
+bundle exec db:migrate
+```
+
+---
+
+#### Seeding Earthquake Data
+
+```
+bundle exec sidekiq
+```
+
+#### Create earthquake records
+This rake task will import and save the past 30 days of USGS earthquake data
+
+```
+bin/rake import_usgs_data:all_month
+```
+
+#### Geocode
+A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable region type of every earthquake region based off the earthquake coordinates. This process involves running another rake task. Unfortunately, the underlying free default geocoding service uses Google APIs, which have strict quotas - 2,500 requests/24 hrs, 5 requests/second. As such, to stay below the quota, run the following rake task with `LIMIT` set to to well below the 2,500 quota limit, e.g. 500.
+```
+bin/rake geocode:all REVERSE=true CLASS=Earthquake SLEEP=0.25 BATCH=100 LIMIT=500
+```
+
+---
+
+### API
+
+#### Start web server
+```
+bin/rails server
+```
+
+To access the endpoint, go to
+
+```
+localhost:3000/regions
+```
+
+#### GET /regions?region_type=world
+
+```json
+
+[
+  {
+    name: 'Papua New Guinea',
+    total_magnitude: 6.33464784810176,
+    earthquake_count: 3
+  },
+  {
+    name: 'Russia',
+    total_magnitude: 5.58709590900764,
+    earthquake_count: 6
+  },
+  {
+    name: 'Indonesia',
+    total_magnitude: 5.43895954437267,
+    earthquake_count: 3
+  },
+
+  ...
+]
+```
+
+#### GET /regions?count=1
+
+```json
+[
+  {
+    name: 'Papua New Guinea',
+    total_magnitude: 6.33464784810176,
+    earthquake_count: 3
+  },
+  {
+    name: 'Russia',
+    total_magnitude: 5.58709590900764,
+    earthquake_count: 6
+  }
+]
+```
+
+#### GET /regions?region_type=state
+
+```json
+[
+  {
+    name: 'Miyagi-ken',
+    total_magnitude: 4.5,
+    earthquake_count: 1
+  },
+  {
+    name: 'Alaska',
+    total_magnitude: 4.47942315179584,
+    earthquake_count: 101
+  },
+  {
+    name: 'Idaho',
+    total_magnitude: 4.39142286776905,
+    earthquake_count: 6
+  },
+
+  ...
+]
+```
+
+#### GET /regions?region_type=world&region_code=JP
+
+```json
+[
+  {
+    name: 'Japan',
+    total_magnitude: 4.5,
+    earthquake_count: 1
+  }
+]
+```
+
+#### GET /regions?region_type=state&region_code=CA
+
+```json
+[
+  {
+    name: 'California',
+    total_magnitude: 4.0201386902756,
+    earthquake_count: 187
+  }
+]
+```
+
+### Rails console access
+
+```
+bin/rails console
+```
+
+### Running Tests
+
+```
+bin/rspec
+```
