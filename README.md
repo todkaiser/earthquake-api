@@ -78,7 +78,7 @@ bin/rake import_usgs_data:all_month
 ```
 
 #### Geocode
-A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable region type of every earthquake region based off the earthquake coordinates. This process involves running another rake task. Unfortunately, the underlying free default geocoding service uses Google APIs, which have strict quotas - 2,500 requests/24 hrs, 5 requests/second. As such, to stay below the quota, run the following rake task with `LIMIT` set to to well below the 2,500 quota limit, e.g. 500.
+A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable region type of based off earthquake coordinates. This process involves running another rake task. Unfortunately, the underlying free default geocoding service uses Google APIs, which have strict quotas - __2,500 requests/24 hrs, 5 requests/second__. As such, to stay below the quota, run the following rake task with `LIMIT` set to well below the quota limit. Set `SLEEP` to 0.25 ms to avoid being throttled.
 ```
 bin/rake geocode:all REVERSE=true CLASS=Earthquake SLEEP=0.25 BATCH=100 LIMIT=500
 ```
