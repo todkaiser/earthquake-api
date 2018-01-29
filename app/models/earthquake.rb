@@ -26,7 +26,9 @@
 
 class Earthquake < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude do |obj, results|
-    if geo = results.first
+    geo = results.first
+
+    if geo.present?
       obj.country = geo.country
       obj.country_code = geo.country_code
       obj.state = geo.state
@@ -35,7 +37,7 @@ class Earthquake < ApplicationRecord
     end
   end
 
-  after_validation :reverse_geocode, if: -> {
-    country.nil?  || country_code.nil? || state.nil?  || state_code.nil?
+  after_validation :reverse_geocode, if: lambda {
+    country.nil? || country_code.nil? || state.nil? || state_code.nil?
   }
 end
