@@ -2,7 +2,7 @@
 
 A webservice that returns the most dangerous regions as measured by total measured earthquake energy in descending order as json documents.
 
-### Pre-install Steps
+### Pre-installation
 
 - Assumptions: using Mac and homebrew
 - Note: For onboarding new developers, consider the [thoughtbot laptop script](https://github.com/thoughtbot/laptop)
@@ -22,7 +22,7 @@ rbenv install 2.4.1
 
 ---
 
-### Install PostgresSQL and Redis
+### Install postgresql and redis
 ```
 brew install postgresql
 ```
@@ -41,7 +41,7 @@ brew services start redis
 
 ---
 
-### Prepare Rails App
+### Prepare rails app
 
 Note: If I have given you access to the private repository, just clone the repo at `git@github.com:todkaiser/earthquake-api.git`
 
@@ -64,7 +64,7 @@ bundle exec db:migrate
 
 ---
 
-#### Seeding Earthquake Data
+#### Seeding earthquake data
 
 ```
 bundle exec sidekiq
