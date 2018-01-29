@@ -37,7 +37,11 @@ class Earthquake < ApplicationRecord
     end
   end
 
-  after_validation :reverse_geocode, if: lambda {
-    country.nil? || country_code.nil? || state.nil? || state_code.nil?
-  }
+  # # TODO This is temporarily disabled to prevent spamming the
+  # # Google provided API. This service requires an API key for
+  # # production-level performance. The free version usage limits
+  # # are a max total 2500 requests / day and 50 requests / second.
+  # after_validation :reverse_geocode, if: lambda {
+  #   country.nil? || country_code.nil? || state.nil? || state_code.nil?
+  # }
 end
