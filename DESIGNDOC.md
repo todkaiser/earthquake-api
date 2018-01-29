@@ -1,4 +1,4 @@
-### Describe how you would improve upon your current design.
+## Describe how you would improve upon your current design.
 
 I think adding a few more endpoints might be more expressive than a bunch of ambiguous query parameters. Some ideas:
 
@@ -57,7 +57,7 @@ This response provides more meaningful information. The `meta` object reminds me
 
 ---
 
-### Why did you choose the region definition you did? What other definitions did you consider and what are the pros/cons of each approach?
+## Why did you choose the region definition you did? What other definitions did you consider and what are the pros/cons of each approach?
 
 Timezone is a less meaningful definition with regard to determining the most dangerous earthquake regions. It isn't intuitive in visualizing a distinct geographical region. While we may be familiar with the geography of the region within our timezone, we need to bear in mind that timezone includes _both_ hemispheres. That's a huge surface area and isn't specific. It's simply not intuitive when identifying a region.
 
@@ -71,7 +71,7 @@ The other region type is state, which is really an alias for an administrative d
 
 ---
 
-### In order to get this server ready for production, what would your next steps be? Is there anything you'd change about the design?
+## In order to get this server ready for production, what would your next steps be? Is there anything you'd change about the design?
 
 #### Task Scheduler
 
