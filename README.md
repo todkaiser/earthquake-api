@@ -1,8 +1,8 @@
 # Earthquake API
 
-A webservice that returns the most dangerous regions as measured by total measured earthquake energy in descending order as json documents.
+A webservice that returns the most dangerous regions as measured by total measured earthquake energy in descending order as  documents.
 
-### Pre-installation
+## Pre-installation
 
 - Assumptions: using Mac and homebrew
 - Note: For onboarding new developers, consider the [thoughtbot laptop script](https://github.com/thoughtbot/laptop)
@@ -22,7 +22,7 @@ rbenv install 2.4.1
 
 ---
 
-### Install postgresql and redis
+## Install postgresql and redis
 ```
 brew install postgresql
 ```
@@ -41,7 +41,7 @@ brew services start redis
 
 ---
 
-### Prepare rails app
+## Prepare rails app
 
 Note: If I have given you access to the private repository, just clone the repo at `git@github.com:todkaiser/earthquake-api.git`
 
@@ -64,7 +64,7 @@ bundle exec db:migrate
 
 ---
 
-#### Seeding earthquake data
+## Seeding earthquake data
 
 ```
 bundle exec sidekiq
@@ -85,7 +85,7 @@ bin/rake geocode:all REVERSE=true CLASS=Earthquake SLEEP=0.25 BATCH=100 LIMIT=50
 
 ---
 
-### API
+## API
 
 #### Start web server
 ```
@@ -100,7 +100,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=world
 
-```json
+```
 
 [
   {
@@ -125,7 +125,7 @@ localhost:3000/regions
 
 #### GET /regions?count=1
 
-```json
+```
 [
   {
     name: 'Papua New Guinea',
@@ -142,7 +142,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=state
 
-```json
+```
 [
   {
     name: 'Miyagi-ken',
@@ -166,7 +166,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=world&region_code=JP
 
-```json
+```
 [
   {
     name: 'Japan',
@@ -178,7 +178,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=state&region_code=CA
 
-```json
+```
 [
   {
     name: 'California',
@@ -188,13 +188,17 @@ localhost:3000/regions
 ]
 ```
 
-### Rails console access
+---
+
+## Rails console access
 
 ```
 bin/rails console
 ```
 
-### Running Tests
+---
+
+## Running Tests
 
 ```
 bin/rspec
