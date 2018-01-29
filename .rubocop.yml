@@ -22,6 +22,16 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
+RSpec/AnyInstance:
+  Exclude:
+  - 'spec/models/earthquake_spec.rb'
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
