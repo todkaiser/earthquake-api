@@ -98,7 +98,7 @@ bin/rake import_usgs_data:all_month
 ```
 
 #### Reverse geocoding
-A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable region type of based off earthquake coordinates. This process involves running another rake task. Unfortunately, the underlying free default geocoding service uses Google APIs, which have strict quotas - __2,500 requests/24 hrs, 5 requests/second__. As such, to stay below the quota, run the following rake task with `LIMIT` set to well below the quota limit. Set `SLEEP` to 0.25 ms to avoid being throttled.
+A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable street address based off coordinates - latitude and longitude. These fields - address, country, country_cde, state, state_code - are then updated in each earthquake record. This process involves running another rake task. Unfortunately, the underlying free default geocoding service uses Google APIs, which have strict quotas - __2,500 requests/24 hrs, 5 requests/second__. As such, to stay below the quota, run the following rake task with `LIMIT` set to well below the quota limit. Set `SLEEP` to 0.25 ms to avoid being throttled.
 ```
 bin/rake geocode:all REVERSE=true CLASS=Earthquake SLEEP=0.25 BATCH=100 LIMIT=500
 ```
