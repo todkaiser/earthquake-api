@@ -57,9 +57,22 @@ gem install bundler
 bundle install
 ```
 
-#### Run database migration
+#### Create databases
+
 ```
-bin/rake db:migrate
+bin/rake db:create
+```
+
+#### Set the database environment to development
+
+```
+bin/rake db:environment:set RAILS_ENV=development
+```
+
+#### Load schema.rb file into the database
+
+```
+bin/rake db:schema:load
 ```
 
 ---
@@ -71,7 +84,7 @@ bundle exec sidekiq
 ```
 
 #### Create earthquake records
-This rake task will import and save the past 30 days of USGS earthquake data
+This rake task will import and save the past 30 days of USGS earthquake data. Note: takes ~1-2 minutes to complete.
 
 ```
 bin/rake import_usgs_data:all_month
