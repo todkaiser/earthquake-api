@@ -89,13 +89,13 @@ The other region type is state, which is really an alias for an administrative d
 
 ### Task Scheduler
 
-The first thing would be to schedule - via a background processing tool like Sidekiq or as a crontab -  two of the following rake tasks:
+The first thing would be to schedule - via a background processing tool like Sidekiq or as a crontab - two of the following rake tasks:
 - `import_usgs_data:all_day`
 - `geocode:all`
 
-The first step would be to run the rake task `import_usgs_data:all_month` just once in a production console to be    create earthquake records. After this is done, `geocode:all` should be run repeatedly until all records have been reverse geocoded.
+Next, run the rake task `import_usgs_data:all_month` just once in a production console to seed earthquake records. After this is done, `geocode:all` should be run repeatedly until all records have been reverse geocoded.
 
-At this point, there is a business decision to be made that determines just how real-time the data needs to be. If it is very important for the database to be be most up-to-date, I recommend actually not using the "All Month 30 days past" endpoint for updates due to the sheer size of the file. This is seems wasteful too as we'll already have the majority of the records if, say, we're updating at every 15 minutes (the update interval reported by USGS).
+At this point, there is a business decision to be made that determines just how real-time the data needs to be. If it is very important for the database to be most up-to-date, I recommend actually not using the "All Month 30 days past" endpoint for updates due to the sheer size of the file. This is seems wasteful too as we'll already have the majority of the records if, say, we're updating at every 15 minutes (the update interval reported by USGS).
 
 A little exploring of the USGS website revealed an endpoint that fetches all earthquakes reported in the past day (updated every 5 minutes). This is nice because the response object is significantly smaller which means less objects to parse through and insert into the database, response times are expected to be faster as USGS servers are expected to work less hard, and the updates are just happening 3X faster than the all month version.
 
