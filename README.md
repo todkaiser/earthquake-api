@@ -59,7 +59,7 @@ bundle install
 
 #### Run database migration
 ```
-bundle exec db:migrate
+bin/rake db:migrate
 ```
 
 ---
