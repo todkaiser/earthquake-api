@@ -1,6 +1,6 @@
 # Earthquake API
 
-A web service that returns the most dangerous regions as measured by total measured earthquake energy in descending order in JSON.
+A JSON web service that returns the most dangerous regions as measured by total measured earthquake energy in descending order.
 
 ## Pre-installation
 
