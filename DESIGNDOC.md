@@ -107,9 +107,9 @@ Many repeated requests to the same endpoint can be resource intensive. Currently
 
 We need to find a way to guard against any malicious actors aiming for a DOS. Proper rate limits need to be set, especially for free versions. Additionally, authentication via API keys should be considered for increased rate limits and quotas. Again, this really depends on the goals of the business. Whatever is decided though, the issue of authenticated vs unauthenticated access needs to be figured out before deploying.
 
-### Security
+### Information Security
 
-If it's feasible, the company should strongly consider a bug bounty program. The web service can be deployed as an alpha and undergo some pentesting from a select pool of invited researchers. This is a great way to quickly identify any security bugs that may have leaked through the development process at a fraction of the cost going with traditional pentest vendors or through the pains of leaked confidential data, PR nightmares, etc.
+If it's feasible, the company should strongly consider a bug bounty program. The web service can be deployed as an alpha and undergo some penetration testing from a select pool of invited researchers. This is a great way to quickly identify any security bugs that may have leaked through the development process at a fraction of the cost going with traditional InfoSec vendors or through the pains of leaked confidential data, PR nightmares, etc.
 
 ### ENV production
 
