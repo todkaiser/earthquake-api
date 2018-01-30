@@ -77,10 +77,17 @@ bin/rake db:schema:load
 
 ---
 
-## Seeding earthquake data
+## Start rails app
+To run the web server and background workers, install the following tool
 
 ```
-bundle exec sidekiq
+gem install foreman
+```
+
+Next, run
+
+```
+foreman start -p 3000
 ```
 
 #### Create earthquake records
@@ -99,11 +106,6 @@ bin/rake geocode:all REVERSE=true CLASS=Earthquake SLEEP=0.25 BATCH=100 LIMIT=50
 ---
 
 ## API
-
-#### Start web server
-```
-bin/rails server
-```
 
 To access the endpoint, go to
 
