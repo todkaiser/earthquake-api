@@ -11,6 +11,7 @@ gem 'rack-cors'
 gem 'redis-rails'
 gem 'rest-client'
 gem 'sidekiq'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'pry-byebug'
