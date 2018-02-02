@@ -85,90 +85,89 @@ localhost:3000/regions
 
 #### GET /regions?region_type=world
 
-```
-
+```json
 [
   {
-    name: 'Papua New Guinea',
-    total_magnitude: 6.33464784810176,
-    earthquake_count: 3
+    "name": "Papua New Guinea",
+    "total_magnitude": 6.33464784810176,
+    "earthquake_count": 3
   },
   {
-    name: 'Russia',
-    total_magnitude: 5.58709590900764,
-    earthquake_count: 6
-  },
+    "name": "Russia",
+    "total_magnitude": 5.58709590900764,
+    "earthquake_count": 6
+  }
   {
-    name: 'Indonesia',
-    total_magnitude: 5.43895954437267,
-    earthquake_count: 3
+    "name": "Indonesia",
+    "total_magnitude": 5.43895954437267,
+    "earthquake_count": 3
   },
 
-  ...
+  /* ... */
 ]
 ```
 
 #### GET /regions?count=1
 
-```
+```json
 [
   {
-    name: 'Papua New Guinea',
-    total_magnitude: 6.33464784810176,
-    earthquake_count: 3
+    "name": "Papua New Guinea",
+    "total_magnitude": 6.33464784810176,
+    "earthquake_count": 3
   },
   {
-    name: 'Russia',
-    total_magnitude: 5.58709590900764,
-    earthquake_count: 6
+    "name": "Russia",
+    "total_magnitude": 5.58709590900764,
+    "earthquake_count": 6
   }
 ]
 ```
 
 #### GET /regions?region_type=state
 
-```
+```json
 [
   {
-    name: 'Miyagi-ken',
-    total_magnitude: 4.5,
-    earthquake_count: 1
+    "name": "Miyagi-ken",
+    "total_magnitude": 4.5,
+    "earthquake_count": 1
   },
   {
-    name: 'Alaska',
-    total_magnitude: 4.47942315179584,
-    earthquake_count: 101
+    "name": "Alaska",
+    "total_magnitude": 4.47942315179584,
+    "earthquake_count": 101
   },
   {
-    name: 'Idaho',
-    total_magnitude: 4.39142286776905,
-    earthquake_count: 6
+    "name": "Idaho",
+    "total_magnitude": 4.39142286776905,
+    "earthquake_count": 6
   },
 
-  ...
+  /* ... */
 ]
 ```
 
 #### GET /regions?region_type=world&region_code=JP
 
-```
+```json
 [
   {
-    name: 'Japan',
-    total_magnitude: 4.5,
-    earthquake_count: 1
+    "name": "Japan",
+    "total_magnitude": 4.5,
+    "earthquake_count": 1
   }
 ]
 ```
 
 #### GET /regions?region_type=state&region_code=CA
 
-```
+```json
 [
   {
-    name: 'California',
-    total_magnitude: 4.0201386902756,
-    earthquake_count: 187
+    "name": "California",
+    "total_magnitude": 4.0201386902756,
+    "earthquake_count": 187
   }
 ]
 ```
