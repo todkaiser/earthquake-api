@@ -14,17 +14,13 @@ $ brew install rbenv
 $ rbenv install 2.4.1
 ```
 
----
-
-## Install postgresql and redis
+#### Install postgresql and redis
 ```
 $ brew install postgresql
 $ brew services start postgresql
 $ brew install redis
 $ brew services start redis
 ```
-
----
 
 ## Prepare rails app
 
@@ -54,8 +50,6 @@ $ bin/rake db:environment:set RAILS_ENV=development
 $ bin/rake db:schema:load
 ```
 
----
-
 ## Start rails app
 To run the web server and background workers, install the following tool
 
@@ -80,8 +74,6 @@ $ bin/rake import_usgs_data:all_week[250]
 ```
 
 Task should complete in ~5 min.
-
----
 
 ## API
 
@@ -213,15 +205,11 @@ $ crontab -e
 
 and delete the job.
 
----
-
 ## Rails console access
 
 ```
 $ bin/rails console
 ```
-
----
 
 ## Running Tests
 
