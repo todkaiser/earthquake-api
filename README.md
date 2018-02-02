@@ -172,7 +172,7 @@ localhost:3000/regions
 ]
 ```
 
-## Task scheduler
+## Schedule background jobs
 
 The application contains a job that pulls USGS earthquake data from the past hour every 5 minutes. To initiate this task, in the project directory run
 
