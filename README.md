@@ -85,7 +85,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=world
 
-```json
+```
 [
   {
     "name": "Papua New Guinea",
@@ -103,13 +103,13 @@ localhost:3000/regions
     "earthquake_count": 3
   },
 
-  /* ... */
+  ...
 ]
 ```
 
 #### GET /regions?count=1
 
-```json
+```
 [
   {
     "name": "Papua New Guinea",
@@ -126,7 +126,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=state
 
-```json
+```
 [
   {
     "name": "Miyagi-ken",
@@ -144,13 +144,13 @@ localhost:3000/regions
     "earthquake_count": 6
   },
 
-  /* ... */
+  ...
 ]
 ```
 
 #### GET /regions?region_type=world&region_code=JP
 
-```json
+```
 [
   {
     "name": "Japan",
@@ -162,7 +162,7 @@ localhost:3000/regions
 
 #### GET /regions?region_type=state&region_code=CA
 
-```json
+```
 [
   {
     "name": "California",
