@@ -1,7 +1,7 @@
 class UsgsService
   attr_reader :data
 
-  def initialize(time_range = 'hour')
+  def initialize(time_range)
     @data = external_api(time_range)
   end
 
