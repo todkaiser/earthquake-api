@@ -91,17 +91,16 @@ foreman start -p 3000
 ```
 
 #### Create earthquake records
-This rake task will import and save the past 7 days of USGS earthquake data.
+
+A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable street address based off coordinates - latitude and longitude. These fields - address, country, country_code, state, state_code - are then updated in each earthquake record. Unfortunately, the free version of this geocoding service uses Google APIs, which have strict quotas - __2,500 requests/24 hrs, 5 requests/second__.
+
+For the purposes of this application and to stay below the quotas, run the below rake task. This rake task will import and save the past 7 days of USGS earthquake data. Pass an integer argument to set a limit to number of earthquake records created, e.g. below will create a maximum of 250 earthquake records.
 
 ```
-bin/rake import_usgs_data:all_week
+bin/rake import_usgs_data:all_week[250]
 ```
 
-#### Reverse geocoding
-A library called [geocoder](https://github.com/alexreisner/geocoder) is used to generate a human-readable street address based off coordinates - latitude and longitude. These fields - address, country, country_code, state, state_code - are then updated in each earthquake record. This process involves running another rake task. Unfortunately, the underlying free default geocoding service uses Google APIs, which have strict quotas - __2,500 requests/24 hrs, 5 requests/second__. As such, to stay below the quota, run the following rake task with `LIMIT` set to well below the quota limit. Set `SLEEP` to 0.25 to avoid being throttled.
-```
-bin/rake geocode:all REVERSE=true CLASS=Earthquake SLEEP=0.25 BATCH=100 LIMIT=500
-```
+Task should complete in ~5 min.
 
 ---
 

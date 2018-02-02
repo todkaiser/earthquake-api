@@ -1,8 +1,10 @@
 class UsgsWorker
   include Sidekiq::Worker
 
-  def perform(time_range = 'month')
+  def perform(time_range, limit)
     earthquakes = UsgsService.new(time_range).data['features']
+    earthquakes = earthquakes.first(limit.to_i) if limit.present?
+
     earthquakes.each do |e|
       properties = e['properties']
       coordinates = e['geometry']['coordinates']
@@ -16,6 +18,8 @@ class UsgsWorker
         quake.tsunami = properties['tsunami']
         quake.title = properties['title']
         quake.time = to_datetime(properties['time'])
+
+        sleep(0.5) # To avoid Google API rate limit (0.25)
       end
 
       if result
