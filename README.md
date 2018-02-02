@@ -217,7 +217,7 @@ The job should be removed.
 $ bin/rails console
 ```
 
-## Running Tests
+## Running tests
 
 ```
 $ bin/rspec
