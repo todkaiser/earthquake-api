@@ -202,6 +202,41 @@ localhost:3000/regions
 ]
 ```
 
+## Task Scheduler
+
+The application contains a job that pulls USGS earthquake data from the past hour every 15 minutes. To initiate this task, in the project directory run
+
+```
+bundle exec whenever --update-crontab --set environment=development
+```
+
+To check if the job is scheduled, run
+
+```
+crontab -l
+```
+
+You should see output similar to the following:
+
+```sh
+$ crontab -l
+
+
+# Begin Whenever generated tasks for: /Users/todkaiser/Development/earthquake-api/config/schedule.rb at: 2018-02-01 18:51:00 -0800
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /bin/bash -l -c 'cd /Users/todkaiser/Development/earthquake-api && RAILS_ENV=development bundle exec rake import_usgs_data:all_hour --silent >> /Users/todkaiser/Development/earthquake-api/log/chron.job 2>&1'
+
+# End Whenever generated tasks for: /Users/todkaiser/Development/earthquake-api/config/schedule.rb at: 2018-02-01 18:51:00 -0800
+```
+#### Important
+
+The cron job will continue running even if the web server is shut down. To remove the cron job, run
+
+```
+crontab -e
+```
+
+and delete the job.
+
 ---
 
 ## Rails console access
