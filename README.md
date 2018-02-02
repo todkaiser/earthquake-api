@@ -91,10 +91,10 @@ foreman start -p 3000
 ```
 
 #### Create earthquake records
-This rake task will import and save the past 30 days of USGS earthquake data. Note: takes ~1-2 minutes to complete.
+This rake task will import and save the past 7 days of USGS earthquake data.
 
 ```
-bin/rake import_usgs_data:all_month
+bin/rake import_usgs_data:all_week
 ```
 
 #### Reverse geocoding
